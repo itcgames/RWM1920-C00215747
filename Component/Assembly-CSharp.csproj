@@ -53,7 +53,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\move.cs" />
      <Compile Include="Assets\Spring.cs" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>C:/College Projects/Year 4/rws/RWM1920-C00215747/Component/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
