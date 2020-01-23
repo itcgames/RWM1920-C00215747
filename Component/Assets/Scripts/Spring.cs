@@ -5,7 +5,8 @@ using System.Collections;
 public class Spring : MonoBehaviour
 {
     public float springForce = 1000;
-    private Collision2D collision;
+    public Collision2D collision;
+    static int col = 0;
     private bool bouncing = false;
     private Animator animator;
     public AudioSource audio;
@@ -18,20 +19,25 @@ public class Spring : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public static int collide(int x)
     {
-        
+        x = col;
+        return x;
     }
 
     void OnCollisionEnter2D(Collision2D coll)
     {
         if (!bouncing && !animator.GetBool("Pressing"))
         {
-            animator.SetBool("Pressing", true);
-            animator.SetBool("Releasing", false);
-            bouncing = true;
-            collision = coll;
-            audio.Play();
+            if (coll.gameObject.tag == "Player")
+            {
+                animator.SetBool("Pressing", true);
+                animator.SetBool("Releasing", false);
+                audio.Play();
+                bouncing = true;
+                collision = coll;
+                col = 1;
+            }
         }
     }
 
