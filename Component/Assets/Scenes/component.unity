@@ -352,7 +352,7 @@ GameObject:
   - component: {fileID: 1072747539}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -457,6 +457,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: spring Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 1407207752376597769, guid: 2d9bc3aa43df38d4c9cd30168db37848,
+        type: 3}
+      propertyPath: m_TagString
+      value: Spring
+      objectReference: {fileID: 0}
     - target: {fileID: 1407207752376597760, guid: 2d9bc3aa43df38d4c9cd30168db37848,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -511,6 +516,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1407207752376597762, guid: 2d9bc3aa43df38d4c9cd30168db37848,
+        type: 3}
+      propertyPath: springForce
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d9bc3aa43df38d4c9cd30168db37848, type: 3}

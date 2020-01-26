@@ -7,6 +7,7 @@ public class Spring : MonoBehaviour
     public float springForce = 1000;
     public Collision2D collision;
     static int col = 0;
+    int count = 0;
     private bool bouncing = false;
     private Animator animator;
     public AudioSource audio;
@@ -27,6 +28,7 @@ public class Spring : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D coll)
     {
+        var rigid = coll.gameObject.GetComponent<Rigidbody2D>();
         if (!bouncing && !animator.GetBool("Pressing"))
         {
             if (coll.gameObject.tag == "Player")
@@ -37,6 +39,29 @@ public class Spring : MonoBehaviour
                 bouncing = true;
                 collision = coll;
                 col = 1;
+                count += 1;
+            }
+            else if(coll.gameObject.tag != "Ground" && rigid.mass >= 10)
+            {
+                animator.SetBool("Pressing", true);
+                animator.SetBool("Releasing", false);
+                audio.Play();
+                bouncing = true;
+                collision = coll;
+                springForce -= 150;
+                col = 1;
+                count += 1;
+            }
+            else if (coll.gameObject.tag != "Ground")
+            {
+                animator.SetBool("Pressing", true);
+                animator.SetBool("Releasing", false);
+                audio.Play();
+                bouncing = true;
+                collision = coll;
+                springForce -= 100;
+                col = 1;
+                count += 1;
             }
         }
     }
@@ -51,6 +76,12 @@ public class Spring : MonoBehaviour
             rb.velocity = new Vector3(0, 0, 0);
             rb.AddForce(new Vector2(0f, springForce));
             bouncing = false;
+        }
+
+        if (count >= 2)
+        {
+            Destroy(gameObject);
+            count = 0;
         }
     }
     
